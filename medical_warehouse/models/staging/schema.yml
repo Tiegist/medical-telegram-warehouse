@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: "{{ env_var('DB_SCHEMA_RAW', 'raw') }}"
+    tables:
+      - name: telegram_messages
+      - name: yolo_detections
+
+models:
+  - name: stg_telegram_messages
+    description: Cleaned Telegram messages from the raw data lake.
+    columns:
+      - name: message_id
+        description: Telegram message id.
+      - name: channel_name
+        description: Telegram channel name.
+      - name: message_date
+        description: Message timestamp.
+      - name: message_text
+        description: Message text content.
+      - name: view_count
+        description: Message view count.
+      - name: forward_count
+        description: Message forward count.
+      - name: has_image
+        description: Indicates if an image was downloaded.
+
+
